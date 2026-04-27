@@ -10,7 +10,7 @@ import streamlit as st
 _API_KEY = st.secrets["GOOGLE_API_KEY"] or st.secrets["GEMINI_API_KEY"]
 _CLIENT = None
 
-MODEL = "gemini-2.5-pro"
+MODEL = "gemini-2.5-flash"
 PROMPT = (
     "From transcript, output EXACTLY these 10 lines in same order. "
     "If missing use N/A. "
