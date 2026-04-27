@@ -3,7 +3,7 @@ from transcribe import transcribe
 from summarize import summarize
 
 st.set_page_config(
-    page_title="Call Transcriber Tool",
+    page_title="l Transcriber Tool",
     page_icon="🎙️",
     layout="wide"
 )
