@@ -4,6 +4,7 @@ from pathlib import Path
 # from dotenv import load_dotenv
 from google import genai
 import streamlit as st
+import socket
 # load_dotenv()
 
 # _API_KEY = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
@@ -53,8 +54,11 @@ def summarize(transcript: str, filename: str = "") -> str:
     """
     client = _get_client()
 
+    hostname = socket.gethostname()
+
     full_prompt = (
         f"{PROMPT}\n\n"
+        f"Caller_Name: {hostname}\n"
         f"Transcript file name: {filename}\n"
         f"Transcript:\n{transcript}"
     )
