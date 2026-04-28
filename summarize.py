@@ -4,7 +4,7 @@ from pathlib import Path
 # from dotenv import load_dotenv
 from google import genai
 import streamlit as st
-import socket
+
 # load_dotenv()
 
 # _API_KEY = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
@@ -15,7 +15,7 @@ MODEL = "gemini-2.5-flash"
 PROMPT = (
     "From transcript, output EXACTLY these 10 lines in same order. "
     "If missing use N/A. "
-    "For Caller Name, use the system name provided below as the agent is the caller. "
+    "For Caller Name, use the Agent name who is calling ."
     "For Duration, use the last timestamp as call duration if no explicit duration is given. "
     "For Date & Time, extract from transcript file name and write EXACTLY as: MM-DD-YYYY HH-MM (24hr). Example: 04-22-2026 01-00 "
     "For Response, determine final state: "
@@ -54,11 +54,9 @@ def summarize(transcript: str, filename: str = "") -> str:
     """
     client = _get_client()
 
-    hostname = socket.gethostname()
 
     full_prompt = (
         f"{PROMPT}\n\n"
-        f"Caller_Name: {hostname}\n"
         f"Transcript file name: {filename}\n"
         f"Transcript:\n{transcript}"
     )
